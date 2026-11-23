@@ -1,0 +1,23 @@
+---
+name: Prune workflow runs
+on:
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Delete branch runs older than this many days (0 deletes everything eligible now)"
+        default: "7"
+        required: false
+      main_days:
+        description: "Delete main and tag runs older than this many days"
+        default: "90"
+        required: false
+permissions:
+  actions: write
+jobs:
+  prune:
+    uses: buchanankerswell/actions/.github/workflows/prune-runs.yml@v1
+    with:
+      days: ${{ github.event.inputs.days || '7' }}
+      main_days: ${{ github.event.inputs.main_days || '90' }}

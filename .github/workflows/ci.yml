@@ -1,0 +1,24 @@
+---
+name: ci
+
+# Static checks only: analysis needs data/R locally (see Makefile).
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  markdownlint:
+    uses: buchanankerswell/actions/.github/workflows/markdownlint.yml@v1
+    with:
+      globs: |
+        README.md
+  typos:
+    uses: buchanankerswell/actions/.github/workflows/typos.yml@v1
+  lint-r:
+    uses: buchanankerswell/actions/.github/workflows/lint-r.yml@v1

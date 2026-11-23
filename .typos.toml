@@ -1,0 +1,8 @@
+[default.extend-words]
+# LaTeX internal used by the eisvogel template
+figurestyle = "figurestyle"
+
+# Bibliography entries and publisher templates contain arbitrary tokens;
+# draft .tex is generated from manuscript.md
+[files]
+extend-exclude = ["*.bib", "*.cls", "*.sty", "draft/**/*.tex"]

@@ -353,7 +353,7 @@ optimize_krige_model <- function(data_dir,
     fold_vector <- sample_and_shuffle_equal_nfolds(n = nrow(sf_hf), seed = seed, n_folds = n_folds, quiet = quiet)
 
     nlopt_fun <- function(x) {
-      itr <<- itr + 1
+      itr <<- itr + 1 # nolint: assignment_linter. Optimizer-callback state by design.
 
       current_cost <- unlist(cost_function(
         sf_hf = sf_hf,
@@ -374,13 +374,13 @@ optimize_krige_model <- function(data_dir,
       if (itr > 1) {
         delta_x <- sqrt(sum((x - prev_x)^2))
         delta_f <- abs(current_cost[3] - prev_cost[3])
-        prev_x <<- x
-        prev_cost <<- current_cost
+        prev_x <<- x # nolint: assignment_linter. Optimizer-callback state by design.
+        prev_cost <<- current_cost # nolint: assignment_linter. Optimizer-callback state by design.
       } else {
         delta_x <- NA
         delta_f <- NA
-        prev_x <<- x
-        prev_cost <<- current_cost
+        prev_x <<- x # nolint: assignment_linter. Optimizer-callback state by design.
+        prev_cost <<- current_cost # nolint: assignment_linter. Optimizer-callback state by design.
       }
 
       if (!quiet) {
@@ -452,9 +452,9 @@ optimize_krige_model <- function(data_dir,
               cat(rep("\n", 8))
             }
 
-            itr <<- -2
-            prev_x <<- NULL
-            prev_f <<- NULL
+            itr <<- -2 # nolint: assignment_linter. Optimizer-callback state by design.
+            prev_x <<- NULL # nolint: assignment_linter. Optimizer-callback state by design.
+            prev_f <<- NULL # nolint: assignment_linter. Optimizer-callback state by design.
             opt <- nloptr(start_vec, nlopt_fun, lb = lower_bounds, ub = upper_bounds, opts = nlopt_options)
 
             if (is.null(opt) || opt$status < 0 || opt$iterations < 10) {
