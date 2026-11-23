@@ -2,6 +2,11 @@
 # LaTeX internal used by the eisvogel template
 figurestyle = "figurestyle"
 
+# R identifiers: gam() model fits and the harc data column
+gam = "gam"
+GAM = "GAM"
+harc = "harc"
+
 # Bibliography entries and publisher templates contain arbitrary tokens;
 # draft .tex is generated from manuscript.md
 [files]

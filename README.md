@@ -18,7 +18,7 @@ This study is written in R. Follow the instructions at [R's homepage](https://ww
 
 ### GDAL, GEOS, and PROJ
 
-Geographic operations require the geographic libraries [`gdal`](https://gdal.org), [`geos`](https://trac.osgeo.org/geos), and [`proj`](https://proj.org). On a Mac, the easiest way to get `gdal`, `geos`, and `proj` is to use Homebrew. Follow the instructions at [Hombrew's homepage](https://brew.sh) to download and install Homebrew on your machine.
+Geographic operations require the geographic libraries [`gdal`](https://gdal.org), [`geos`](https://trac.osgeo.org/geos), and [`proj`](https://proj.org). On a Mac, the easiest way to get `gdal`, `geos`, and `proj` is to use Homebrew. Follow the instructions at [Homebrew's homepage](https://brew.sh) to download and install Homebrew on your machine.
 
 Once Homebrew is installed, the following will install the latest `gdal`, `geos`, and `proj` libraries together:
 
