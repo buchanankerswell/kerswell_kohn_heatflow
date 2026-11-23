@@ -236,11 +236,15 @@ to_spatraster <- function(obj, data_col = NULL) {
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-get_noaa_relief <- function(lon1, lon2, lat1, lat2, data_dir, out_dir, arc_seconds = 30, res = NULL, add_geoid = FALSE, sea_level_offset = NULL, quiet = FALSE) {
+get_noaa_relief <- function(
+  lon1, lon2, lat1, lat2, data_dir, out_dir, arc_seconds = 30, res = NULL, add_geoid = FALSE, sea_level_offset = NULL, quiet = FALSE
+) {
   with_error_handling({
     if (is.null(res)) res_tag <- "native-res" else paste0("res-", res)
     if (is.null(sea_level_offset)) sea_level_tag <- "0m-offset" else paste0(sea_level_offset, "m-offset")
-    fname <- sprintf("relief-wgs84-lon(%.2f,%.2f)-lat(%.2f,%.2f)-%.0f-arc-seconds-%s-%s.tif", lon1, lon2, lat1, lat2, arc_seconds, res_tag, sea_level_tag)
+    fname <- sprintf(
+      "relief-wgs84-lon(%.2f,%.2f)-lat(%.2f,%.2f)-%.0f-arc-seconds-%s-%s.tif", lon1, lon2, lat1, lat2, arc_seconds, res_tag, sea_level_tag
+    )
     cache_file <- file.path(out_dir, fname)
     if (file.exists(cache_file)) {
       return(rast(cache_file))
