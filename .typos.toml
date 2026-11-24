@@ -1,13 +1,5 @@
-[default.extend-words]
-# LaTeX internal used by the eisvogel template
-figurestyle = "figurestyle"
-
-# R identifiers: gam() model fits and the harc data column
-gam = "gam"
-GAM = "GAM"
-harc = "harc"
-
 # Bibliography entries and publisher templates contain arbitrary tokens;
-# draft .tex is generated from manuscript.md
+# draft .tex is generated from manuscript.md. Spelling exceptions live
+# centrally in actions/config/typos.toml.
 [files]
 extend-exclude = ["*.bib", "*.cls", "*.sty", "draft/**/*.tex"]
